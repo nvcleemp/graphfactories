@@ -13,25 +13,32 @@ SHELL = /bin/sh
 CC = gcc
 CFLAGS = -O4 -Wall
 
-FACTORIES = flower complete
+FACTORIES = build/flower build/complete
 SOURCES = flower.c complete.c Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
 
 clean:
-	rm -f $(FACTORIES) graphfactories-sources.zip graphfactories-sources.tar.gz
+	rm -f graphfactories-sources.zip graphfactories-sources.tar.gz
+	rm -rf build
 
-flower: flower.c
-	${CC} $(CFLAGS) flower.c -o flower
+dir:
+	mkdir -p build
+
+build/flower: flower.c dir
+	${CC} $(CFLAGS) flower.c -o build/flower
 	
-complete: complete.c
-	${CC} $(CFLAGS) complete.c -o complete
+build/complete: complete.c dir
+	${CC} $(CFLAGS) complete.c -o build/complete
 
-sources: graphfactories-sources.zip graphfactories-sources.tar.gz
+sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz dist-dir
 
-graphfactories-sources.zip: $(SOURCES)
-	zip graphfactories-sources $(SOURCES)
+dist-dir:
+	mkdir -p dist
 
-graphfactories-sources.tar.gz: $(SOURCES)
-	tar czf graphfactories-sources.tar.gz $(SOURCES)
+dist/graphfactories-sources.zip: $(SOURCES) dist-dir
+	zip dist/graphfactories-sources $(SOURCES)
+
+dist/graphfactories-sources.tar.gz: $(SOURCES) dist-dir
+	tar czf dist/graphfactories-sources.tar.gz $(SOURCES)
 	
