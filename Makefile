@@ -13,8 +13,10 @@ SHELL = /bin/sh
 CC = gcc
 CFLAGS = -O4 -Wall
 
-FACTORIES = build/flower build/complete build/completebipartite
+FACTORIES = build/flower build/complete build/completebipartite \
+            build/path
 SOURCES = flower.c complete.c completebipartite.c \
+          path.c \
           Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
@@ -34,6 +36,9 @@ build/complete: complete.c dir
 
 build/completebipartite: completebipartite.c dir
 	${CC} $(CFLAGS) completebipartite.c -o build/completebipartite
+
+build/path: path.c dir
+	${CC} $(CFLAGS) path.c -o build/path
 
 sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz dist-dir
 
