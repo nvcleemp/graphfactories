@@ -25,29 +25,29 @@ clean:
 	rm -rf dist
 	rm -rf build
 
-dir:
+build/flower: flower.c
 	mkdir -p build
-
-build/flower: flower.c dir
 	${CC} $(CFLAGS) flower.c -o build/flower
 
-build/complete: complete.c dir
+build/complete: complete.c
+	mkdir -p build
 	${CC} $(CFLAGS) complete.c -o build/complete
 
-build/completebipartite: completebipartite.c dir
+build/completebipartite: completebipartite.c
+	mkdir -p build
 	${CC} $(CFLAGS) completebipartite.c -o build/completebipartite
 
-build/path: path.c dir
+build/path: path.c
+	mkdir -p build
 	${CC} $(CFLAGS) path.c -o build/path
 
 sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz dist-dir
 
-dist-dir:
+dist/graphfactories-sources.zip: $(SOURCES)
 	mkdir -p dist
-
-dist/graphfactories-sources.zip: $(SOURCES) dist-dir
 	zip dist/graphfactories-sources $(SOURCES)
 
-dist/graphfactories-sources.tar.gz: $(SOURCES) dist-dir
+dist/graphfactories-sources.tar.gz: $(SOURCES)
+	mkdir -p dist
 	tar czf dist/graphfactories-sources.tar.gz $(SOURCES)
 	
