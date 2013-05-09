@@ -15,3 +15,11 @@
 *.exe
 *.out
 *.app
+flower
+
+# source distributions
+graphfactories-sources.tar.gz
+graphfactories-sources.zip
+
+# NetBeans folder
+nbproject/
