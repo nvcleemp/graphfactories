@@ -19,7 +19,7 @@ SOURCES = flower.c complete.c Makefile COPYRIGHT.txt LICENSE.txt README.md
 all: $(FACTORIES)
 
 clean:
-	rm -f graphfactories-sources.zip graphfactories-sources.tar.gz
+	rm -rf dist
 	rm -rf build
 
 dir:
