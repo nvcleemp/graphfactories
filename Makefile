@@ -13,8 +13,8 @@ SHELL = /bin/sh
 CC = gcc
 CFLAGS = -O4 -Wall
 
-FACTORIES = flower
-SOURCES = flower.c Makefile COPYRIGHT.txt LICENSE.txt README.md
+FACTORIES = flower complete
+SOURCES = flower.c complete.c Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
 
@@ -23,6 +23,9 @@ clean:
 
 flower: flower.c
 	${CC} $(CFLAGS) flower.c -o flower
+	
+complete: complete.c
+	${CC} $(CFLAGS) complete.c -o complete
 
 sources: graphfactories-sources.zip graphfactories-sources.tar.gz
 

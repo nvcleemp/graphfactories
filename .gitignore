@@ -16,6 +16,7 @@
 *.out
 *.app
 flower
+complete
 
 # source distributions
 graphfactories-sources.tar.gz
