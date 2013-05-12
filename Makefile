@@ -45,7 +45,7 @@ build/cycle: cycle.c
 	mkdir -p build
 	${CC} $(CFLAGS) cycle.c -o build/cycle
 
-sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz dist-dir
+sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz
 
 dist/graphfactories-sources.zip: $(SOURCES)
 	mkdir -p dist
