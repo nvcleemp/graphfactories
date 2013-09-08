@@ -14,9 +14,9 @@ CC = gcc
 CFLAGS = -O4 -Wall
 
 FACTORIES = build/flower build/complete build/completebipartite \
-            build/path build/cycle build/cycle_pl
+            build/path build/cycle build/cycle_pl build/wheel_pl
 SOURCES = flower.c complete.c completebipartite.c \
-          path.c cycle.c cycle_pl.c\
+          path.c cycle.c cycle_pl.c wheel_pl.c\
           Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
@@ -48,6 +48,10 @@ build/cycle: cycle.c
 build/cycle_pl: cycle_pl.c
 	mkdir -p build
 	${CC} $(CFLAGS) cycle_pl.c -o build/cycle_pl
+	
+build/wheel_pl: wheel_pl.c
+	mkdir -p build
+	${CC} $(CFLAGS) wheel_pl.c -o build/wheel_pl
 
 sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz
 
