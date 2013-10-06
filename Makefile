@@ -15,10 +15,10 @@ CFLAGS = -O4 -Wall
 
 FACTORIES = build/flower build/complete build/completebipartite \
             build/path build/cycle build/cycle_pl build/wheel_pl\
-            build/subdivided_star
+            build/subdivided_star build/regular_tree
 SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
-          subdivided_star.c\
+          subdivided_star.c regular_tree.c\
           Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
@@ -56,6 +56,10 @@ build/wheel_pl: wheel_pl.c
 	${CC} $(CFLAGS) wheel_pl.c -o build/wheel_pl
 
 build/subdivided_star: subdivided_star.c shared/multicode_base.c shared/multicode_output.c
+	mkdir -p build
+	${CC} $(CFLAGS) $^ -o $@
+	
+build/regular_tree: regular_tree.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
 
