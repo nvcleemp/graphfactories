@@ -29,7 +29,7 @@ clean:
 
 build/flower: flower.c
 	mkdir -p build
-	${CC} $(CFLAGS) flower.c -o build/flower
+	${CC} $(CFLAGS) $^ -o $@
 
 build/complete: complete.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
@@ -49,11 +49,11 @@ build/cycle: cycle.c shared/multicode_base.c shared/multicode_output.c
 	
 build/cycle_pl: cycle_pl.c
 	mkdir -p build
-	${CC} $(CFLAGS) cycle_pl.c -o build/cycle_pl
+	${CC} $(CFLAGS) $^ -o $@
 	
 build/wheel_pl: wheel_pl.c
 	mkdir -p build
-	${CC} $(CFLAGS) wheel_pl.c -o build/wheel_pl
+	${CC} $(CFLAGS) $^ -o $@
 
 build/subdivided_star: subdivided_star.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
