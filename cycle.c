@@ -7,33 +7,37 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include"shared/multicode_base.h"
+#include"shared/multicode_output.h"
 
 /*
  * Constructs the cycle graph with the specified number of vertices.
  * The graph is output in multi_code format.
  */
+void constructGraph(int order){
+    int i;
+    
+    GRAPH graph;
+    ADJACENCY adj;
+    
+    prepareGraph(graph, adj, order);
+    
+    for(i = 1; i <= order; i++){
+        addEdge(graph, adj, i, (i%order)+1);
+    }
+    
+    writeMultiCode(graph, adj, stdout);
+}
+
 int main(int argc, char** argv) {
 
-    if (argc!=2) {
+    if (argc==2) {
+        int order = atoi(argv[1]);
+        constructGraph(order);
+        return (EXIT_SUCCESS);
+    } else {
         fprintf(stderr,"%s n\n",argv[0]);
         return EXIT_FAILURE;
     }
-    
-    int order = atoi(argv[1]);
-    
-    fprintf(stdout, ">>multi_code<<");
-    
-    fprintf(stdout, "%c", (unsigned char) order);
-    
-    fprintf(stdout, "%c", (unsigned char) 2);
-    fprintf(stdout, "%c", (unsigned char) order);
-    fprintf(stdout, "%c", (unsigned char) 0);
-    int i;
-    for (i = 2; i < order; i++) {
-        fprintf(stdout, "%c", (unsigned char) (i + 1));
-        fprintf(stdout, "%c", (unsigned char) 0);
-    }
-    
-    return (EXIT_SUCCESS);
 }
 

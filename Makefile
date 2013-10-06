@@ -31,21 +31,21 @@ build/flower: flower.c
 	mkdir -p build
 	${CC} $(CFLAGS) flower.c -o build/flower
 
-build/complete: complete.c
+build/complete: complete.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
-	${CC} $(CFLAGS) complete.c -o build/complete
+	${CC} $(CFLAGS) $^ -o $@
 
-build/completebipartite: completebipartite.c
+build/completebipartite: completebipartite.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
-	${CC} $(CFLAGS) completebipartite.c -o build/completebipartite
+	${CC} $(CFLAGS) $^ -o $@
 
-build/path: path.c
+build/path: path.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
-	${CC} $(CFLAGS) path.c -o build/path
+	${CC} $(CFLAGS) $^ -o $@
 	
-build/cycle: cycle.c
+build/cycle: cycle.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
-	${CC} $(CFLAGS) cycle.c -o build/cycle
+	${CC} $(CFLAGS) $^ -o $@
 	
 build/cycle_pl: cycle_pl.c
 	mkdir -p build
