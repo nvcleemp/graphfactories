@@ -15,6 +15,18 @@
 #include"shared/multicode_base.h"
 #include"shared/multicode_output.h"
 
+int getOrder(int internalDegree, int depth){
+    int i;
+    
+    int power = 1;
+    
+    for(i=0; i<depth; i++){
+        power *= internalDegree - 1;
+    }
+    
+    return (internalDegree*power - 2)/(internalDegree - 2);
+}
+
 void constructGraph(int internalDegree, int depth){
     int i, j, k;
     int minLeaf, maxLeaf;
@@ -22,7 +34,7 @@ void constructGraph(int internalDegree, int depth){
     GRAPH graph;
     ADJACENCY adj;
     
-    prepareGraph(graph, adj, 1 + internalDegree*((1<<depth) - 1));
+    prepareGraph(graph, adj, getOrder(internalDegree, depth));
     
     if(depth==0){
         writeMultiCode(graph, adj, stdout);
