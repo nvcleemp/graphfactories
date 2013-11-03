@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
         constructGraph(vertices, edgeMultiplicity);
         return (EXIT_SUCCESS);
     } else {
-        fprintf(stderr,"%s n\n",argv[0]);
+        fprintf(stderr,"%s n m\n",argv[0]);
         return EXIT_FAILURE;
     }
 }
