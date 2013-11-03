@@ -20,6 +20,7 @@ FACTORIES = build/flower build/complete build/completebipartite \
 SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
           subdivided_star.c regular_tree.c\
+          fatcomplete.c pearlchain.c\
           Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
