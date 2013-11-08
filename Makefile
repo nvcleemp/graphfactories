@@ -16,7 +16,7 @@ CFLAGS = -O4 -Wall
 FACTORIES = build/flower build/complete build/completebipartite \
             build/path build/cycle build/cycle_pl build/wheel_pl\
             build/subdivided_star build/regular_tree build/fatcomplete\
-            build/fatcycle build/pearlchain
+            build/fatcycle build/pearlchain build/flowersnark
 SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
           subdivided_star.c regular_tree.c\
@@ -74,6 +74,10 @@ build/fatcycle: fatcycle.c shared/multicode_base.c shared/multicode_output.c
 	${CC} $(CFLAGS) $^ -o $@
 	
 build/pearlchain: pearlchain.c shared/multicode_base.c shared/multicode_output.c
+	mkdir -p build
+	${CC} $(CFLAGS) $^ -o $@
+
+build/flowersnark: flowersnark.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
 
