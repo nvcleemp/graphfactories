@@ -21,6 +21,7 @@ SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
           subdivided_star.c regular_tree.c\
           fatcomplete.c fatcycle.c pearlchain.c\
+          flowersnark.c
           Makefile COPYRIGHT.txt LICENSE.txt README.md
 
 all: $(FACTORIES)
@@ -78,6 +79,10 @@ build/pearlchain: pearlchain.c shared/multicode_base.c shared/multicode_output.c
 	${CC} $(CFLAGS) $^ -o $@
 
 build/flowersnark: flowersnark.c shared/multicode_base.c shared/multicode_output.c
+	mkdir -p build
+	${CC} $(CFLAGS) $^ -o $@
+	
+build/petersen: petersen.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
 
