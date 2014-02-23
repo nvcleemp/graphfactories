@@ -11,7 +11,7 @@
 #include"shared/multicode_output.h"
 
 /*
- * Constructs the generalized Petersengraph G(n,k).
+ * Constructs the prism graph.
  * The graph is output in multi_code format.
  */
 void constructGraph(int n){
