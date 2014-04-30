@@ -18,7 +18,7 @@ FACTORIES = build/flower build/complete build/completebipartite \
             build/subdivided_star build/regular_tree build/fatcomplete\
             build/fatcycle build/pearlchain build/flowersnark\
             build/petersen build/prism build/moebiusladder build/hypercube\
-            build/kneser
+            build/kneser build/double_wheel_pl
 SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
           subdivided_star.c regular_tree.c\
@@ -58,6 +58,10 @@ build/cycle_pl: cycle_pl.c
 	${CC} $(CFLAGS) $^ -o $@
 	
 build/wheel_pl: wheel_pl.c
+	mkdir -p build
+	${CC} $(CFLAGS) $^ -o $@
+	
+build/double_wheel_pl: double_wheel_pl.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
 
@@ -104,7 +108,7 @@ build/hypercube: hypercube.c shared/multicode_base.c shared/multicode_output.c
 build/kneser: kneser.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
-
+	
 sources: dist/graphfactories-sources.zip dist/graphfactories-sources.tar.gz
 
 dist/graphfactories-sources.zip: $(SOURCES)
