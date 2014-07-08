@@ -18,7 +18,7 @@ FACTORIES = build/flower build/complete build/completebipartite \
             build/subdivided_star build/regular_tree build/fatcomplete\
             build/fatcycle build/pearlchain build/flowersnark\
             build/petersen build/prism build/moebiusladder build/hypercube\
-            build/kneser build/double_wheel_pl
+            build/kneser build/double_wheel_pl build/independent_set
 SOURCES = flower.c complete.c completebipartite.c \
           path.c cycle.c cycle_pl.c wheel_pl.c\
           subdivided_star.c regular_tree.c\
@@ -106,6 +106,10 @@ build/hypercube: hypercube.c shared/multicode_base.c shared/multicode_output.c
 	${CC} $(CFLAGS) $^ -o $@
 	
 build/kneser: kneser.c shared/multicode_base.c shared/multicode_output.c
+	mkdir -p build
+	${CC} $(CFLAGS) $^ -o $@
+	
+build/independent_set: independent_set.c shared/multicode_base.c shared/multicode_output.c
 	mkdir -p build
 	${CC} $(CFLAGS) $^ -o $@
 	
